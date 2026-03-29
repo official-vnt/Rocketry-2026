@@ -1,0 +1,73 @@
+# 🚀 Rocketry-2026
+
+## 📌 Description
+
+This project is an **interactive rocket system visualization** that explains the internal architecture of a model rocket.
+It demonstrates how avionics, payload, power systems, and control mechanisms are integrated into a real rocket design.
+
+---
+
+## ⚙️ Features
+
+* Interactive rocket diagram (clickable zones)
+* Detailed explanation of each rocket section
+* Real-world components (STM32, MPU6050, LoRa, etc.)
+* Lightweight web-based implementation (HTML, CSS, JS)
+* Educational + project demonstration tool
+
+---
+
+## 🛠️ Tech Used
+
+* HTML
+* CSS
+* JavaScript
+* SVG (for rocket visualization)
+
+---
+
+## 🚀 How to Run
+
+```bash
+git clone https://github.com/official-vnt/Rocketry-2026.git
+cd Rocketry-2026
+```
+
+Open:
+
+```bash
+index.html
+```
+
+---
+
+## 📂 Project Structure
+
+```
+Rocketry-2026/
+│── index.html
+│── style.css (optional)
+│── script.js (optional)
+│── assets/ (images if added)
+```
+
+---
+
+## 🎯 Goal
+
+To create a **visual + interactive explanation** of rocket subsystems for learning and demonstration purposes.
+
+---
+
+## 🚀 Future Scope
+
+* Add real-time telemetry
+* Integrate hardware data (STM32)
+* 3D visualization
+* Simulation support
+
+---
+
+## 👨‍💻 Author
+
+Vnt
