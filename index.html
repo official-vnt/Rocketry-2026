@@ -1,13 +1,11 @@
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 .wrap{display:flex;gap:16px;padding:1rem 0;font-family:var(--font-sans)}
 .rocket-col{flex:0 0 260px;display:flex;flex-direction:column;align-items:center}
 .info-col{flex:1;display:flex;flex-direction:column;gap:8px}
-.zone-btn{width:220px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:7px 12px;text-align:left;cursor:pointer;background:transparent;font-size:12px;color:var(--color-text-secondary);transition:background .15s}
-.zone-btn:hover{background:var(--color-background-secondary)}
-.zone-btn.active{border-color:var(--color-border-info);background:var(--color-background-info);color:var(--color-text-info)}
-.zone-label{font-size:11px;font-weight:500;margin-bottom:4px;color:var(--color-text-secondary)}
+.zone-btn{width:220px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:7px 12px;text-align:left;cursor:pointer;font-size:12px;transition:background .15s;background:var(--zone);color:#fff}
+.zone-btn:hover{opacity:0.85}
+.zone-btn.active{background:#fff;color:var(--zone);border-color:var(--zone);font-weight:500}
 .info-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;min-height:200px}
 .info-card h3{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px}
 .comp-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px}
@@ -27,14 +25,11 @@
         <clipPath id="bc"><rect x="60" y="100" width="100" height="360" rx="0"/></clipPath>
       </defs>
 
-      <!-- NOSE CONE -->
       <polygon points="110,18 160,100 60,100" fill="#B5D4F4" stroke="var(--color-border-secondary)" stroke-width="1"/>
       <text x="110" y="72" text-anchor="middle" font-size="9" fill="#0C447C" font-family="var(--font-sans)" font-weight="500">GPS</text>
 
-      <!-- BODY -->
       <rect x="60" y="100" width="100" height="360" fill="#E6F1FB" stroke="var(--color-border-secondary)" stroke-width="1"/>
 
-      <!-- ZONE 1: Avionics Bay (top) -->
       <rect id="z1" x="60" y="105" width="100" height="90" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5" rx="0"/>
       <text x="110" y="122" text-anchor="middle" font-size="9" fill="#042C53" font-family="var(--font-sans)" font-weight="500">Black Pill FC</text>
       <text x="110" y="135" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">MPU6050</text>
@@ -43,14 +38,12 @@
       <text x="110" y="171" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">LoRa SX1278</text>
       <text x="110" y="187" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">Buck + LDO</text>
 
-      <!-- ZONE 2: Battery Bay -->
       <rect id="z2" x="60" y="198" width="100" height="70" fill="#C0DD97" stroke="#639922" stroke-width="0.5" rx="0"/>
       <text x="110" y="220" text-anchor="middle" font-size="9" fill="#173404" font-family="var(--font-sans)" font-weight="500">2S LiPo</text>
       <text x="110" y="234" text-anchor="middle" font-size="8" fill="#27500A" font-family="var(--font-sans)">500mAh Battery</text>
       <text x="110" y="248" text-anchor="middle" font-size="8" fill="#27500A" font-family="var(--font-sans)">Power Switch</text>
       <text x="110" y="262" text-anchor="middle" font-size="8" fill="#27500A" font-family="var(--font-sans)">LiPo Charger Port</text>
 
-      <!-- ZONE 3: Payload Bay -->
       <rect id="z3" x="60" y="271" width="100" height="80" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.5" rx="0"/>
       <text x="110" y="292" text-anchor="middle" font-size="9" fill="#4A1B0C" font-family="var(--font-sans)" font-weight="500">Payload Module</text>
       <text x="110" y="306" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">Blue Pill FC</text>
@@ -58,32 +51,26 @@
       <text x="110" y="334" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">4x Fin Servos</text>
       <text x="110" y="348" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">1S LiPo</text>
 
-      <!-- ZONE 4: Parachute Bay -->
       <rect id="z4" x="60" y="354" width="100" height="50" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5" rx="0"/>
       <text x="110" y="374" text-anchor="middle" font-size="9" fill="#26215C" font-family="var(--font-sans)" font-weight="500">Parachute Bay</text>
       <text x="110" y="389" text-anchor="middle" font-size="8" fill="#3C3489" font-family="var(--font-sans)">Nylon chute</text>
       <text x="110" y="402" text-anchor="middle" font-size="8" fill="#3C3489" font-family="var(--font-sans)">Ejection charge</text>
 
-      <!-- ZONE 5: TVC Mount -->
       <rect id="z5" x="60" y="407" width="100" height="53" fill="#FAC775" stroke="#854F0B" stroke-width="0.5" rx="0"/>
       <text x="110" y="425" text-anchor="middle" font-size="9" fill="#412402" font-family="var(--font-sans)" font-weight="500">TVC Gimbal Mount</text>
       <text x="110" y="439" text-anchor="middle" font-size="8" fill="#633806" font-family="var(--font-sans)">2x MG90S Servo</text>
       <text x="110" y="453" text-anchor="middle" font-size="8" fill="#633806" font-family="var(--font-sans)">Gimbal Frame</text>
 
-      <!-- BOTTOM CAP (motor) -->
       <rect x="60" y="460" width="100" height="36" fill="#D3D1C7" stroke="var(--color-border-secondary)" stroke-width="1"/>
       <text x="110" y="480" text-anchor="middle" font-size="9" fill="#2C2C2A" font-family="var(--font-sans)" font-weight="500">Solid Motor</text>
       <text x="110" y="492" text-anchor="middle" font-size="8" fill="#5F5E5A" font-family="var(--font-sans)">Aerotech G8</text>
 
-      <!-- MOTOR NOZZLE -->
       <polygon points="75,496 145,496 135,526 85,526" fill="#B4B2A9" stroke="var(--color-border-secondary)" stroke-width="1"/>
       <text x="110" y="516" text-anchor="middle" font-size="8" fill="#444441" font-family="var(--font-sans)">Nozzle</text>
 
-      <!-- FLAME -->
       <polygon points="90,526 130,526 120,570 100,570" fill="#EF9F27" opacity="0.8"/>
       <polygon points="95,526 125,526 115,560 105,560" fill="#FCDE5A" opacity="0.7"/>
 
-      <!-- ZONE CLICK OVERLAYS (transparent, clickable) -->
       <rect x="60" y="18" width="100" height="82" fill="transparent" style="cursor:pointer" onclick="selectZone('nose')"/>
       <rect x="60" y="105" width="100" height="90" fill="transparent" style="cursor:pointer" onclick="selectZone('avionics')"/>
       <rect x="60" y="198" width="100" height="70" fill="transparent" style="cursor:pointer" onclick="selectZone('battery')"/>
@@ -91,7 +78,6 @@
       <rect x="60" y="354" width="100" height="50" fill="transparent" style="cursor:pointer" onclick="selectZone('chute')"/>
       <rect x="60" y="407" width="100" height="53" fill="transparent" style="cursor:pointer" onclick="selectZone('tvc')"/>
 
-      <!-- ZONE LABELS (left side) -->
       <text x="55" y="65" text-anchor="end" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)">Nose cone</text>
       <line x1="56" y1="62" x2="60" y2="62" stroke="var(--color-border-secondary)" stroke-width="0.5"/>
       <text x="55" y="155" text-anchor="end" font-size="9" fill="#185FA5" font-family="var(--font-sans)">Avionics</text>
@@ -113,12 +99,12 @@
 
   <div class="info-col">
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px">
-      <button class="zone-btn" id="btn-nose"     onclick="selectZone('nose')">Nose cone</button>
-      <button class="zone-btn" id="btn-avionics" onclick="selectZone('avionics')">Avionics bay</button>
-      <button class="zone-btn" id="btn-battery"  onclick="selectZone('battery')">Battery bay</button>
-      <button class="zone-btn" id="btn-payload"  onclick="selectZone('payload')">Payload bay</button>
-      <button class="zone-btn" id="btn-chute"    onclick="selectZone('chute')">Parachute bay</button>
-      <button class="zone-btn" id="btn-tvc"      onclick="selectZone('tvc')">TVC gimbal mount</button>
+      <button class="zone-btn" id="btn-nose"     onclick="selectZone('nose')"     style="--zone:#5DAEE8">Nose cone</button>
+      <button class="zone-btn" id="btn-avionics" onclick="selectZone('avionics')" style="--zone:#378ADD">Avionics bay</button>
+      <button class="zone-btn" id="btn-battery"  onclick="selectZone('battery')"  style="--zone:#639922">Battery bay</button>
+      <button class="zone-btn" id="btn-payload"  onclick="selectZone('payload')"  style="--zone:#D85A30">Payload bay</button>
+      <button class="zone-btn" id="btn-chute"    onclick="selectZone('chute')"    style="--zone:#7F77DD">Parachute bay</button>
+      <button class="zone-btn" id="btn-tvc"      onclick="selectZone('tvc')"      style="--zone:#BA7517">TVC gimbal mount</button>
     </div>
 
     <div class="info-card" id="info-card">
