@@ -1,0 +1,229 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{display:flex;gap:16px;padding:1rem 0;font-family:var(--font-sans)}
+.rocket-col{flex:0 0 260px;display:flex;flex-direction:column;align-items:center}
+.info-col{flex:1;display:flex;flex-direction:column;gap:8px}
+.zone-btn{width:220px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:7px 12px;text-align:left;cursor:pointer;background:transparent;font-size:12px;color:var(--color-text-secondary);transition:background .15s}
+.zone-btn:hover{background:var(--color-background-secondary)}
+.zone-btn.active{border-color:var(--color-border-info);background:var(--color-background-info);color:var(--color-text-info)}
+.zone-label{font-size:11px;font-weight:500;margin-bottom:4px;color:var(--color-text-secondary)}
+.info-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;min-height:200px}
+.info-card h3{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px}
+.comp-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.comp-name{font-weight:500;color:var(--color-text-primary);min-width:110px}
+.comp-desc{color:var(--color-text-secondary);line-height:1.4}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--color-text-secondary)}
+.leg-dot{width:8px;height:8px;border-radius:50%}
+</style>
+
+<div class="wrap">
+  <div class="rocket-col">
+    <svg width="220" height="580" viewBox="0 0 220 580" style="flex-shrink:0">
+      <defs>
+        <clipPath id="nc"><polygon points="110,18 160,100 60,100"/></clipPath>
+        <clipPath id="bc"><rect x="60" y="100" width="100" height="360" rx="0"/></clipPath>
+      </defs>
+
+      <!-- NOSE CONE -->
+      <polygon points="110,18 160,100 60,100" fill="#B5D4F4" stroke="var(--color-border-secondary)" stroke-width="1"/>
+      <text x="110" y="72" text-anchor="middle" font-size="9" fill="#0C447C" font-family="var(--font-sans)" font-weight="500">GPS</text>
+
+      <!-- BODY -->
+      <rect x="60" y="100" width="100" height="360" fill="#E6F1FB" stroke="var(--color-border-secondary)" stroke-width="1"/>
+
+      <!-- ZONE 1: Avionics Bay (top) -->
+      <rect id="z1" x="60" y="105" width="100" height="90" fill="#B5D4F4" stroke="#378ADD" stroke-width="0.5" rx="0"/>
+      <text x="110" y="122" text-anchor="middle" font-size="9" fill="#042C53" font-family="var(--font-sans)" font-weight="500">Black Pill FC</text>
+      <text x="110" y="135" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">MPU6050</text>
+      <text x="110" y="147" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">BMP280</text>
+      <text x="110" y="159" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">SD Card</text>
+      <text x="110" y="171" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">LoRa SX1278</text>
+      <text x="110" y="187" text-anchor="middle" font-size="8" fill="#0C447C" font-family="var(--font-sans)">Buck + LDO</text>
+
+      <!-- ZONE 2: Battery Bay -->
+      <rect id="z2" x="60" y="198" width="100" height="70" fill="#C0DD97" stroke="#639922" stroke-width="0.5" rx="0"/>
+      <text x="110" y="220" text-anchor="middle" font-size="9" fill="#173404" font-family="var(--font-sans)" font-weight="500">2S LiPo</text>
+      <text x="110" y="234" text-anchor="middle" font-size="8" fill="#27500A" font-family="var(--font-sans)">500mAh Battery</text>
+      <text x="110" y="248" text-anchor="middle" font-size="8" fill="#27500A" font-family="var(--font-sans)">Power Switch</text>
+      <text x="110" y="262" text-anchor="middle" font-size="8" fill="#27500A" font-family="var(--font-sans)">LiPo Charger Port</text>
+
+      <!-- ZONE 3: Payload Bay -->
+      <rect id="z3" x="60" y="271" width="100" height="80" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.5" rx="0"/>
+      <text x="110" y="292" text-anchor="middle" font-size="9" fill="#4A1B0C" font-family="var(--font-sans)" font-weight="500">Payload Module</text>
+      <text x="110" y="306" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">Blue Pill FC</text>
+      <text x="110" y="320" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">MPU6050 + BMP280</text>
+      <text x="110" y="334" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">4x Fin Servos</text>
+      <text x="110" y="348" text-anchor="middle" font-size="8" fill="#712B13" font-family="var(--font-sans)">1S LiPo</text>
+
+      <!-- ZONE 4: Parachute Bay -->
+      <rect id="z4" x="60" y="354" width="100" height="50" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5" rx="0"/>
+      <text x="110" y="374" text-anchor="middle" font-size="9" fill="#26215C" font-family="var(--font-sans)" font-weight="500">Parachute Bay</text>
+      <text x="110" y="389" text-anchor="middle" font-size="8" fill="#3C3489" font-family="var(--font-sans)">Nylon chute</text>
+      <text x="110" y="402" text-anchor="middle" font-size="8" fill="#3C3489" font-family="var(--font-sans)">Ejection charge</text>
+
+      <!-- ZONE 5: TVC Mount -->
+      <rect id="z5" x="60" y="407" width="100" height="53" fill="#FAC775" stroke="#854F0B" stroke-width="0.5" rx="0"/>
+      <text x="110" y="425" text-anchor="middle" font-size="9" fill="#412402" font-family="var(--font-sans)" font-weight="500">TVC Gimbal Mount</text>
+      <text x="110" y="439" text-anchor="middle" font-size="8" fill="#633806" font-family="var(--font-sans)">2x MG90S Servo</text>
+      <text x="110" y="453" text-anchor="middle" font-size="8" fill="#633806" font-family="var(--font-sans)">Gimbal Frame</text>
+
+      <!-- BOTTOM CAP (motor) -->
+      <rect x="60" y="460" width="100" height="36" fill="#D3D1C7" stroke="var(--color-border-secondary)" stroke-width="1"/>
+      <text x="110" y="480" text-anchor="middle" font-size="9" fill="#2C2C2A" font-family="var(--font-sans)" font-weight="500">Solid Motor</text>
+      <text x="110" y="492" text-anchor="middle" font-size="8" fill="#5F5E5A" font-family="var(--font-sans)">Aerotech G8</text>
+
+      <!-- MOTOR NOZZLE -->
+      <polygon points="75,496 145,496 135,526 85,526" fill="#B4B2A9" stroke="var(--color-border-secondary)" stroke-width="1"/>
+      <text x="110" y="516" text-anchor="middle" font-size="8" fill="#444441" font-family="var(--font-sans)">Nozzle</text>
+
+      <!-- FLAME -->
+      <polygon points="90,526 130,526 120,570 100,570" fill="#EF9F27" opacity="0.8"/>
+      <polygon points="95,526 125,526 115,560 105,560" fill="#FCDE5A" opacity="0.7"/>
+
+      <!-- ZONE CLICK OVERLAYS (transparent, clickable) -->
+      <rect x="60" y="18" width="100" height="82" fill="transparent" style="cursor:pointer" onclick="selectZone('nose')"/>
+      <rect x="60" y="105" width="100" height="90" fill="transparent" style="cursor:pointer" onclick="selectZone('avionics')"/>
+      <rect x="60" y="198" width="100" height="70" fill="transparent" style="cursor:pointer" onclick="selectZone('battery')"/>
+      <rect x="60" y="271" width="100" height="80" fill="transparent" style="cursor:pointer" onclick="selectZone('payload')"/>
+      <rect x="60" y="354" width="100" height="50" fill="transparent" style="cursor:pointer" onclick="selectZone('chute')"/>
+      <rect x="60" y="407" width="100" height="53" fill="transparent" style="cursor:pointer" onclick="selectZone('tvc')"/>
+
+      <!-- ZONE LABELS (left side) -->
+      <text x="55" y="65" text-anchor="end" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)">Nose cone</text>
+      <line x1="56" y1="62" x2="60" y2="62" stroke="var(--color-border-secondary)" stroke-width="0.5"/>
+      <text x="55" y="155" text-anchor="end" font-size="9" fill="#185FA5" font-family="var(--font-sans)">Avionics</text>
+      <line x1="56" y1="152" x2="60" y2="152" stroke="#378ADD" stroke-width="0.5"/>
+      <text x="55" y="235" text-anchor="end" font-size="9" fill="#3B6D11" font-family="var(--font-sans)">Battery</text>
+      <line x1="56" y1="232" x2="60" y2="232" stroke="#639922" stroke-width="0.5"/>
+      <text x="55" y="312" text-anchor="end" font-size="9" fill="#993C1D" font-family="var(--font-sans)">Payload</text>
+      <line x1="56" y1="309" x2="60" y2="309" stroke="#D85A30" stroke-width="0.5"/>
+      <text x="55" y="382" text-anchor="end" font-size="9" fill="#534AB7" font-family="var(--font-sans)">Parachute</text>
+      <line x1="56" y1="379" x2="60" y2="379" stroke="#7F77DD" stroke-width="0.5"/>
+      <text x="55" y="435" text-anchor="end" font-size="9" fill="#854F0B" font-family="var(--font-sans)">TVC</text>
+      <line x1="56" y1="432" x2="60" y2="432" stroke="#BA7517" stroke-width="0.5"/>
+      <text x="55" y="480" text-anchor="end" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)">Motor</text>
+      <line x1="56" y1="477" x2="60" y2="477" stroke="var(--color-border-secondary)" stroke-width="0.5"/>
+    </svg>
+
+    <div style="font-size:11px;color:var(--color-text-secondary);text-align:center;margin-top:4px">Click any zone to explore</div>
+  </div>
+
+  <div class="info-col">
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px">
+      <button class="zone-btn" id="btn-nose"     onclick="selectZone('nose')">Nose cone</button>
+      <button class="zone-btn" id="btn-avionics" onclick="selectZone('avionics')">Avionics bay</button>
+      <button class="zone-btn" id="btn-battery"  onclick="selectZone('battery')">Battery bay</button>
+      <button class="zone-btn" id="btn-payload"  onclick="selectZone('payload')">Payload bay</button>
+      <button class="zone-btn" id="btn-chute"    onclick="selectZone('chute')">Parachute bay</button>
+      <button class="zone-btn" id="btn-tvc"      onclick="selectZone('tvc')">TVC gimbal mount</button>
+    </div>
+
+    <div class="info-card" id="info-card">
+      <h3 id="zone-title" style="color:var(--color-text-secondary)">Select a zone</h3>
+      <div id="zone-body" style="color:var(--color-text-secondary);font-size:13px;line-height:1.6">Click any section of the rocket or a button above to see what components go there and why.</div>
+    </div>
+
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#378ADD"></div> Avionics</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#639922"></div> Battery</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#D85A30"></div> Payload</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#7F77DD"></div> Parachute</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div> TVC gimbal</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#888780"></div> Motor / structural</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const zones = {
+  nose: {
+    title: "Nose cone",
+    color: "#0C447C",
+    components: [
+      { name: "NEO-M8N GPS", dot: "#378ADD", desc: "Placed at the very top for maximum sky visibility. GPS needs a clear line of sight to satellites — any metal body section below it acts as a ground plane." }
+    ],
+    note: "The nose cone is purely structural except for the GPS. It must be made from non-metallic material (3D printed PLA/PETG) so radio signals pass through."
+  },
+  avionics: {
+    title: "Avionics bay",
+    color: "#0C447C",
+    components: [
+      { name: "STM32 Black Pill", dot: "#378ADD", desc: "Main flight computer. Central to this bay — all other components connect to it via I2C, SPI, and PWM wires." },
+      { name: "MPU6050 (IMU)", dot: "#378ADD", desc: "Mounted on vibration foam directly on the perfboard. Placed as close to the rocket's CG as possible for accurate attitude readings." },
+      { name: "BMP280 (Barometer)", dot: "#378ADD", desc: "Needs a small vent hole drilled in the airframe to sense outside air pressure. Mount away from any heat sources." },
+      { name: "SD Card Module", dot: "#378ADD", desc: "Soldered next to the Black Pill on the perfboard. Hot-glue the SD card slot after insertion — launch G-forces can eject it." },
+      { name: "LoRa SX1278", dot: "#378ADD", desc: "Antenna wire routed through a small hole in the airframe and taped along the outside. Keep antenna away from metal structures." },
+      { name: "Buck Converter + LDO", dot: "#378ADD", desc: "Power regulation circuit. Converts 7.4V LiPo to 5V (servos) and 3.3V (sensors). Mounted on the same perfboard." }
+    ],
+    note: "All components soldered on a single perfboard. Board is mounted on rubber standoffs to isolate from airframe vibration. This bay is directly above the battery bay."
+  },
+  battery: {
+    title: "Battery bay",
+    color: "#27500A",
+    components: [
+      { name: "2S LiPo 500mAh", dot: "#639922", desc: "Main power source for the entire rocket electronics. Strapped with a velcro strap — never hot-glued — so it can be removed for charging." },
+      { name: "Power switch", dot: "#639922", desc: "Arming switch accessible from outside the rocket body through a small slot. Used to power on the electronics just before launch." },
+      { name: "Charging port", dot: "#639922", desc: "XT30 or JST connector exposed through the airframe so the LiPo can be charged in-situ without removing the battery." }
+    ],
+    note: "Battery placement affects the Center of Gravity (CG). Position it so CG stays in the upper half of the rocket body. Heavier = place higher for forward CG."
+  },
+  payload: {
+    title: "Payload bay",
+    color: "#712B13",
+    components: [
+      { name: "Blue Pill FC", dot: "#D85A30", desc: "Payload flight computer. Runs the descent PID algorithm independently after separation from the rocket." },
+      { name: "MPU6050 (IMU)", dot: "#D85A30", desc: "Second IMU, dedicated to the payload. Mounted at the geometric center of the payload module on vibration foam." },
+      { name: "BMP280 (Barometer)", dot: "#D85A30", desc: "Detects altitude during descent. Triggers landing mode when below threshold (e.g. 5m). Needs its own vent hole." },
+      { name: "4x Fin Servos", dot: "#D85A30", desc: "Mounted inside at 90° intervals. Each servo connects to one fin via a pushrod. Fins are hinged on the outside of the payload body." },
+      { name: "1S LiPo 300mAh", dot: "#D85A30", desc: "Lightweight dedicated power for the payload. Separated from rocket battery so payload is electrically independent after ejection." }
+    ],
+    note: "The payload is a self-contained module that ejects from the rocket at apogee. It must function completely independently — its own power, own FC, own sensors."
+  },
+  chute: {
+    title: "Parachute bay",
+    color: "#3C3489",
+    components: [
+      { name: "Nylon parachute", dot: "#7F77DD", desc: "Folded carefully using the Z-fold method. Too tight = may not deploy fully. Too loose = may deploy early from aerodynamic forces." },
+      { name: "Ejection charge", dot: "#7F77DD", desc: "Small black powder charge triggered by the flight computer at apogee. Creates gas pressure to blow the nose cone off and push out the parachute." },
+      { name: "Shock cord", dot: "#7F77DD", desc: "Elastic cord connecting nose cone to rocket body. Absorbs the snap when parachute deploys at speed, preventing structural damage." }
+    ],
+    note: "This is the only section with pyrotechnics. Handle ejection charge with care. Never arm (connect e-match) until the rocket is on the launch pad and everyone is clear."
+  },
+  tvc: {
+    title: "TVC gimbal mount",
+    color: "#633806",
+    components: [
+      { name: "2x MG90S Servo", dot: "#BA7517", desc: "One servo controls pitch (forward/backward tilt), one controls yaw (left/right tilt) of the motor mount. Must be metal gear — plastic strips under thrust load." },
+      { name: "Gimbal frame", dot: "#BA7517", desc: "3D printed PETG or ABS frame that holds the motor and allows ±8° deflection in 2 axes. Print at 40%+ infill for strength." },
+      { name: "Pushrods + clevises", dot: "#BA7517", desc: "M2 threaded rods connecting servo horns to gimbal arms. Adjustable length for precise center calibration before flight." }
+    ],
+    note: "This is the most mechanically critical part. Any slop or backlash in the gimbal causes the PID loop to fight itself. Print tight-tolerance parts, use ball-link clevises, and verify full deflection range before flight."
+  }
+};
+
+function selectZone(id) {
+  const z = zones[id];
+  if (!z) return;
+
+  document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('btn-' + id);
+  if (btn) btn.classList.add('active');
+
+  document.getElementById('zone-title').textContent = z.title;
+  document.getElementById('zone-title').style.color = z.color;
+
+  let html = '';
+  z.components.forEach(c => {
+    html += `<div class="comp-row"><div class="dot" style="background:${c.dot}"></div><div><span class="comp-name">${c.name}</span> — <span class="comp-desc">${c.desc}</span></div></div>`;
+  });
+  if (z.note) {
+    html += `<div style="margin-top:10px;padding:8px 10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:11px;color:var(--color-text-secondary);line-height:1.5">${z.note}</div>`;
+  }
+  document.getElementById('zone-body').innerHTML = html;
+}
+
+selectZone('avionics');
+</script>
